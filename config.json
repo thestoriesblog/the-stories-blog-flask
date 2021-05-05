@@ -1,0 +1,14 @@
+{
+    "params":
+    {
+        "local_server":"True",
+        "local_uri": "mysql://root:@localhost/storyblog",
+        "prod_uri": "mysql://root:@localhost/storyblog",
+        "gmail-user":"thestoriesblog@gmail.com",
+        "gmail-password":"TheStoriesBlog605",
+        "no_of_posts":3,
+        "admin_user":"Aakash",
+        "admin_password":"aakash123",
+        "upload_location":"D:\\Flask2021\\static\\assets\\img"
+    }
+}

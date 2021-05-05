@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block body %}
+        <!-- Page Header-->
+        
+        <header class="masthead" style=background-image:url('{{ url_for('static', filename='assets/img/home-bg.jpg') }}')>
+            
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <div class="site-heading">
+                            <h1>Admin-Panel</h1>
+                            <span class="subheading">Manage the blog posts as Admin User</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <h2>Welcome user <i>{{params['admin_user']}}</i> !!</h2>
+        <div class="container">
+            <br> 
+            <a href='/dashboard'><button class="btn btn-primary float-left" id="dbhome">Dashboard Home</button></a>
+            <a href='/logout'><button class="btn btn-primary float-right" id="logout">LOG OUT</button></a>
+           <br><br>
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                                    
+                   <hr>
+ <a href='/edit/0'><button class="btn btn-primary float-left" id="addstory">Post A New Story</button></a>
+<br><hr>
+
+
+ <table class="table table-borderless">
+    <thead>
+      <tr>
+        <th scope="col">SNo.</th>
+        <th scope="col">Post Title</th>
+        <th scope="col">Post Content</th>
+        <th scope="col">Date</th>
+        <th scope="col">Action</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for post in posts %}
+      <tr>
+        <th scope="row">{{post.sno}}</th>
+        <td>{{post.title}}</td>
+        <td>{{post.content[0:50]}}</td>
+        <td>{{post.dateofpost}}</td>
+        <td><a href='/edit/{{post.sno}}'><button class="btn btn-primary">EDIT</button></a></td>
+        <td><a href='/delete/{{post.sno}}'><button class="btn btn-danger">DELETE</button></td></a></td>
+      </tr>
+    {%endfor%}    
+    </tbody>
+  </table>
+
+
+                   
+                    <!-- Pager-->
+                    <div class="clearfix"><a class="btn btn-primary float-left" href="{{prev}}">← Newer Posts</a><a class="btn btn-primary float-right" href="{{next}}">Older Posts →</a></div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+
+        {% endblock %}
+        

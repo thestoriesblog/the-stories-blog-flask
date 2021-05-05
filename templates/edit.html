@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block body %}
+        <!-- Page Header-->
+        <header class="masthead" style=background-image:url('{{ url_for('static', filename='assets/img/home-bg.jpg') }}')>
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <div class="page-heading">
+                            <h1>Write a Story or Edit a Story</h1>
+                            <span class="subheading">Write a new Story or Edit an Old one</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                   <h3>Basic Actions </h3> 
+                    <a href='/dashboard'><button class="btn btn-primary float-left" id="dbhome">Dashboard Home</button></a>
+                    <a href='/logout'><button class="btn btn-primary float-right" id="logout">LOG OUT</button></a>
+                <br><br>
+                    <hr>
+                    <h3>POST NEW STORY</h3>
+                    
+                    <form action='/uploader' method="post" enctype="multipart/form-data">
+                        <input class="btn btn-primary" align="middle" type="file" id="addstory" name="file1" placeholder="Upload Image to the New Story"></input>
+                        <button class="btn btn-primary float-right" type="sumbit">UPLOAD IMAGE</button>
+                       </form>
+                       
+                        
+
+                    <br><hr>
+                                      
+                    <h3>EDIT POST in form given under</h3>
+                    
+
+                    <form id="contactForm" name="sentMessage" action="/edit/{{sno}}" method="post" novalidate>
+                        <div class="control-group">
+                            <div class="form-group floating-label-form-group controls">
+                                <label>Blog-Title</label>
+                                <input class="form-control" name="title" id="title" type="text" placeholder="Blog-Title" value="{{post.title}}" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="form-group floating-label-form-group controls">
+                                <label>slug</label>
+                                <input class="form-control" name="slug" id="slug" type="text" placeholder="slug" value = "{{post.slug}}" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Image Filename</label>
+                                <input class="form-control" name="imgfile" id="imgfile" type="imgfile" placeholder="Image Filename" value="{{post.img_file}}"  />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="form-group floating-label-form-group controls">
+                                <label>Content</label>
+                                <input class="form-control" name="content" id="content" rows="20" placeholder="Blog Content" value="{{post.content}}" ></input>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <br />
+                        <div id="success"></div>
+                        <button class="btn btn-primary" id="sendMessageButton" type="submit">Post the Story</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+ {%endblock%}
